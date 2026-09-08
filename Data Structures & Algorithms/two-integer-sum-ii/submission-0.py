@@ -1,16 +1,20 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        l, r = 1, len(numbers)
-
-        for _ in range(len(numbers)):
-            total = numbers[l - 1] + numbers[r - 1]
-            # print(l, r, total)
-            if total == target:
-                return [l, r]
-            elif total < target:
-                l += 1
-            else:
-                # total > target
-                r -= 1
+        # Using two pointers:
+        # Initialize 2 pointers to start and end of the array
+        # If the sum of both ints is > target
+            # Find a smaller number, move R pointer <-
+        # If sum of ints is < target
+            # This can be possible because of -ve nums, move L ->
         
-        return [-1, -1]
+        l, r = 0, len(numbers) - 1
+
+        while l < r:
+            currsum = numbers[l] + numbers[r]
+            if currsum == target:
+                return [l + 1, r + 1]
+            elif currsum > target:
+                r -= 1
+            else:
+                l += 1
+        
