@@ -1,9 +1,9 @@
 class Solution:
     def hasDuplicate(self, nums: List[int]) -> bool:
-        occured = []
-        for num in nums:
-            if num in occured:
+        seen = set()
+        for n in nums:
+            if n in seen:
                 return True
-            occured.append(num)
+            seen.add(n)
         
         return False
